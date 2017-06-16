@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Knowledge Share</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.hero-widget {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+/* hr {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #DCDCDC;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 18px 0;
+} */
+.hero-widget .icon {
+	display: block;
+	font-size: 30px;
+	line-height: 30px;
+	margin-bottom: 3px;
+}
+
+.hero-widget var {
+	display: block;
+	height: 20px;
+	font-size: 20px;
+	line-height: 20px;
+	font-style: normal;
+}
+
+.hero-widget label {
+	font-size: 10px;
+}
+
+.hero-widget .options {
+	margin-top: 5px;
+}
+</style>
+
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Knowledge Share</a>
+			</div>
+		</div>
+	</nav>
+
+
+	<br />
+	<div class="container">
+		<div class="row">
+
+			<form action="createNewPost" method="post">
+				<div class="form-group">
+					<a href="#">
+						<div class="text">
+							<var>Heading</var>
+						</div> <label class="text-muted">Tags</label>
+					</a> <input type="text" class="form-control" id="title"
+						placeholder="title" name="title"> <br>
+					<textarea rows="4" class="form-control" name="postText"
+						style="width: 100%" placeholder="Your comment here"></textarea>
+					<br> <label class="radio-inline"> <input type="radio"
+						name="category" value="java">Java
+					</label> <label class="radio-inline"> <input type="radio"
+						name="category" value="cloud">Cloud
+					</label> <label class="radio-inline"> <input type="radio"
+						name="category" value="nodejs">Node JS
+					</label> <br> <br> <input type="submit" value="post"
+						class="btn btn-primary">
+				</div>
+			</form>
+		</div>
+		<div class="row">
+			<h1>My posts</h1>
+			<%for(i in posts) {%>
+			<div>
+				<div class="row">
+					<a href='/post/editPost?postId=<%=posts[i]._id%>' >
+						
+					<div class="col-md-6">
+						<h3><%= posts[i].title %></h3>
+					</div>
+					</a>
+					<div class="col-md-6" align="right">
+						<a href='/post/editPost?postId=<%=posts[i]._id%>' class="btn btn-info btn-md"> <span
+							class="glyphicon glyphicon-edit"></span> Edit
+						</a>
+					</div>
+				</div>
+				<p><%= posts[i].text %></p>
+			</div>
+			<hr>
+			<%}%>
+		</div>
+	</div>
+
+</body>
+</html>
+
+
